@@ -14,7 +14,7 @@ A aplicação é uma **vitrine de produtos** em **React** e **TypeScript**, cons
 3. Instale as dependências com `npm install` ou `yarn install`.
 
 ## Executando o projeto
-1. Rode `npm start` ou `yarn start`.
+1. Rode `npm start`, `npm run dev` ou `yarn start`.
 2. Abra o navegador em `http://localhost:5173/`.
 3. Navegue pelos produtos e interaja com o modal.
 
