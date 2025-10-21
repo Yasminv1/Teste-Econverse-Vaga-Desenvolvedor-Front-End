@@ -1,0 +1,348 @@
+$primary-blue: #3442B5; // Cor do título e do botão COMPRAR
+$text-dark: #3F3F40;
+$text-light: #666;
+$price-original-color: #999;
+$shipping-color: #008000; // Verde para frete grátis
+$border-light: #eee;
+$card-padding: 15px;
+
+.productShowcase {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Arial', sans-serif; // Fonte padrão para o design
+
+   h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3b3dbf;
+    text-align: center;
+    position: relative;
+    margin-bottom: 8px;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 0 20px;
+    }
+  }
+
+  p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .viewAll {
+    display: block;
+    text-align: center;
+    color: $text-dark;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+
+  .carouselContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 40px; 
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid $border-light;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $text-light;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+  }
+
+  .productsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    overflow-x: hidden; 
+  }
+}
+
+.productCard {
+  border: 1px solid $border-light;
+  border-radius: 8px;
+  padding: $card-padding;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: white;
+  cursor: pointer; 
+  transition: box-shadow 0.2s;
+
+  &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .productImage {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+    
+    img {
+      width: 80%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      padding: 10% 0;
+    }
+  }
+
+  .productName {
+    font-size: 0.85rem;
+    color: $text-light;
+    height: 3em; 
+    line-height: 1.5;
+    overflow: hidden;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .priceInfo {
+    text-align: left;
+    .originalPrice {
+      text-decoration: line-through;
+      color: $price-original-color;
+      font-size: 0.75rem;
+      display: block;
+    }
+
+    .offerPrice {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $text-dark;
+      margin: 2px 0;
+      span {
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin-left: 1px;
+      }
+    }
+
+    .installments {
+      font-size: 0.8rem;
+      color: $text-dark;
+      margin-bottom: 5px;
+    }
+
+    .shipping {
+      font-size: 0.7rem;
+      color: $shipping-color;
+      font-weight: 500;
+      margin-bottom: 15px;
+      display: block;
+    }
+  }
+
+  .buyButton {
+    background-color: $primary-blue;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: darken($primary-blue, 10%);
+    }
+  }
+}
+
+// --- ESTILOS DO MODAL (.modalOverlay e .modalContent) ---
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 25px; // Padding interno conforme a imagem
+  border-radius: 8px;
+  width: 90%;
+  max-width: 700px; // Largura maior para o layout horizontal do modal
+  height: auto; // Altura automática
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  display: flex; // Mantém o flexbox para centralizar o conteúdo, se necessário
+  align-items: center; // Centraliza verticalmente o conteúdo
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px; // Ajustado um pouco para baixo
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  z-index: 1001; 
+  opacity: 0.7; // Mais suave
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// --- NOVOS ESTILOS PARA O CONTEÚDO DO MODAL HORIZONTAL ---
+.modalDetalhesProduto {
+  display: flex; // Layout horizontal
+  gap: 30px; // Espaçamento entre imagem e informações
+  width: 100%; // Ocupa a largura total do modalContent
+  align-items: flex-start; // Alinha itens ao topo
+
+  .modalImagemProduto {
+    flex-shrink: 0; // Impede que a imagem encolha
+    width: 250px; // Largura fixa para a imagem do iPhone
+    height: auto;
+    background: #ffff; // Fundo da imagem
+    border-radius: 5px;
+    padding: 20px 0; // Padding na imagem para centralizar
+
+    img {
+      max-width: 80%; // Imagem menor dentro do container
+      height: auto;
+      display: block;
+      margin: 0 auto; // Centraliza a imagem
+    }
+  }
+
+  .modalInfoProduto {
+    flex-grow: 1; // Permite que a seção de informações ocupe o espaço restante
+    text-align: left;
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $text-dark;
+      margin-bottom: 5px;
+    }
+
+    .modalPrecoAtual {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: $text-dark;
+      margin-bottom: 20px;
+    }
+
+    .modalDescricao {
+      font-size: 0.9rem;
+      color: $text-light;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .modalMaisDetalhes {
+      font-size: 0.85rem;
+      color: $primary-blue;
+      text-decoration: none;
+      margin-bottom: 25px;
+      display: inline-block; // Para o margin-bottom funcionar
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .modalAcoes {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-top: 30px; // Espaço do topo
+    }
+
+    .modalContador {
+      display: flex;
+      border: 1px solid $border-light;
+      border-radius: 5px;
+      overflow: hidden; // Para as bordas dos botões internos
+      
+      button {
+        background: #f0f0f0;
+        border: none;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: $text-dark;
+        &:hover {
+          background: #e0e0e0;
+        }
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 35px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $text-dark;
+      }
+    }
+
+    .modalBotaoComprar {
+      background-color: #fdd835; // Amarelo da imagem
+      color: $text-dark;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      text-transform: uppercase;
+      flex-grow: 1; // Ocupa o espaço restante horizontalmente
+
+      &:hover {
+        background-color: darken(#fdd835, 10%);
+      }
+    }
+  }
+}
